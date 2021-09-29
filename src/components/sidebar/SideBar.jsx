@@ -21,10 +21,12 @@ const SideBar = () => {
                 <div className="sidebarMenu">
                     <h3 className="sidebarTitle">Dashboard</h3>
                     <ul className="sidebarList">
-                            <li className="sidebarListItem active" Link='/'>
+                        <Link to='/' className='link'>
+                            <li className="sidebarListItem active">
                                 <LineStyleIcon className='sidebarIcon'/>
                                 Home
                             </li>
+                        </Link>
                             <li className="sidebarListItem">
                                 <TimelineIcon className='sidebarIcon'/>
                                 Analytics
@@ -38,14 +40,18 @@ const SideBar = () => {
                 <div className="sidebarMenu">
                     <h3 className="sidebarTitle">Quick menu</h3>
                     <ul className="sidebarList">
-                            <li className="sidebarListItem" Link='/users'>
+                        <Link  to='/users' className='link'>
+                            <li className="sidebarListItem">
                                 <PermIdentityIcon className='sidebarIcon'/>
                                 User
                             </li>
+                        </Link>
+                        <Link to='/products' className='link'>
                             <li className="sidebarListItem">
                                 <StorefrontIcon className='sidebarIcon'/>
                                 Products
                             </li>
+                        </Link>
                             <li className="sidebarListItem">
                                 <AttachMoneyOutlinedIcon className='sidebarIcon' />
                                 Transactions
