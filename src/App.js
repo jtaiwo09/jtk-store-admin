@@ -9,25 +9,31 @@ import User from './pages/user/User';
 import ProductList from './pages/productList/ProductList';
 import Product from './pages/product/Product';
 import NewProduct from './pages/newProduct/NewProduct';
-
+import Login from './pages/login/Login';
+import Cookies from 'universal-cookie';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Auth from './components/Auth';
+
+const cookies = new Cookies();
 
 function App() {
+  const admin = cookies.get('isAdmin');
   return (
     <Router>
-      <TopBar />
-        <div className='container'>
-        <SideBar />
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/users' component={UserList} />
-            <Route path='/user/:userId' component={User} />
-            <Route path='/newUser' component={NewUser} />
-            <Route path='/products' component={ProductList} />
-            <Route path='/Product/:productId' component={Product} />
-            <Route path='/newproduct' component={NewProduct} />
-          </Switch>
-        </div>
+        {admin && <TopBar />}
+          <div className='container'>
+          {admin && <SideBar />}
+            <Switch>
+              <Auth path='/' exact component={Home} admin={admin} />
+              <Auth path='/users' component={UserList} admin={admin} />
+              <Auth path='/user/:userId' component={User} admin={admin} />
+              <Auth path='/newUser' component={NewUser} admin={admin} />
+              <Auth path='/products' component={ProductList} admin={admin} />
+              <Auth path='/Product/:productId' component={Product} admin={admin} />
+              <Auth path='/newproduct' component={NewProduct} admin={admin} />
+              <Route path='/login' component={Login} />
+            </Switch>
+          </div>
     </Router>
   );
 }
