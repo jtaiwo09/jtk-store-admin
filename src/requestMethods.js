@@ -3,7 +3,7 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
-const BASEURL = 'http://localhost:3000/api';
+const BASEURL = 'https://jtk-store-api.herokuapp.com/';
 const Token = cookies.get('accessToken');
 
 export const publicRequest = axios.create({
