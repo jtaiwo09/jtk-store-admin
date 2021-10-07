@@ -53,5 +53,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://jtk-store-api.herokuapp.com/"
+  "proxy": "https://jtk-store-api.herokuapp.com/api"
 }
