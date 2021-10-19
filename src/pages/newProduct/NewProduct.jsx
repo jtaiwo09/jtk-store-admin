@@ -4,6 +4,8 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { addProduct } from '../../redux/apiCalls';
 import { useDispatch } from 'react-redux';
 import app from '../../firebase';
+import { notification } from 'antd';
+import 'antd/dist/antd.css';
 
 const NewProduct = () => {
     const [input, setInput] = useState({})
@@ -58,6 +60,9 @@ const NewProduct = () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 const product = { ...input, img: downloadURL, categories: cat, color, size }
                 addProduct(product, dispatch);
+                notification['success']({
+                    message: `${input.title} item has been created`,
+                });
             });
         }
         );

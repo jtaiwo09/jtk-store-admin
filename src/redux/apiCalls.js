@@ -13,10 +13,15 @@ const login = async (dispatch, user)=> {
     dispatch(fetchingStart);
     try {
         const res = await publicRequest.post('/auth/login', user)
-        dispatch(fetchingSuccess(res.data))
-        cookies.set('accessToken', res.data.accessToken)
-        cookies.set('isAdmin', res.data.isAdmin);
-        window.location.href='/'
+        if(res.data.isAdmin){
+            dispatch(fetchingSuccess(res.data))
+            cookies.set('accessToken', res.data.accessToken)
+            cookies.set('isAdmin', res.data.isAdmin);
+            window.location.href='/'
+        } else {
+            dispatch(fetchingFailure('You are not authorised to login'));
+        }
+        
         
     } catch (error) {
         dispatch(fetchingFailure(error.response.data.error));

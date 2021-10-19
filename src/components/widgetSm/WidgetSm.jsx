@@ -26,7 +26,7 @@ const WidgetLg = () => {
                         <li className="widgetSmListItem" key={user._id}>
                             <img src={user.img || 'https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif'} alt="" className='widgetSmImg'/>
                             <div className="widgetSmUser">
-                                <span className="widgetSmUsername">{user.username}</span>
+                                <span className="widgetSmUsername">{user.username.charAt(0).toUpperCase()+user.username.slice(1)}</span>
                                 {/* <span className="widgetSmUserTitle">Software Engineer</span> */}
                             </div>
                             <button className='widgetSmButton'>

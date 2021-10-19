@@ -14,9 +14,7 @@ const FeaturedInfo = () => {
                 const res = await userRequest.get('/orders/income');
                 setIncome(res.data.sort((a, b)=> a._id - b._id));
                 setPercentage(Math.floor((res.data[1].total * 100) / res.data[0].total - 100));
-            } catch (error) {
-                console.log(error.response.data)
-            }
+            } catch (error) {}
         }
         getIncome();
     },[])

@@ -9,6 +9,8 @@ import { userRequest } from '../../requestMethods';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import app from '../../firebase';
 import { updateProduct } from '../../redux/apiCalls';
+import { notification } from 'antd';
+import 'antd/dist/antd.css';
 
 const Product = () => {
     const location = useLocation();
@@ -65,12 +67,18 @@ const Product = () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                     const product = { ...input, img: downloadURL, categories: arr.cat, color: arr.color, size: arr.size }
                     updateProduct(productId, product, dispatch);
+                    notification['success']({
+                        message: 'Product has been updated'
+                    });
                 });
             }
             );
         } else {
             const product = { ...input, categories: arr.cat, color: arr.color, size: arr.size }
             updateProduct(productId, product, dispatch);
+            notification['success']({
+                message: 'Product has been updated',
+            });
         }
     }
 

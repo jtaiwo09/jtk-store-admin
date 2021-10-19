@@ -11,9 +11,7 @@ const WidgetSm = () => {
             try {
                 const res = await userRequest.get('orders/');
                 setUserOrder(res.data);
-            } catch (error) {
-                console.log(error.response.data)
-            }
+            } catch (error) {}
         }
         getUserOrder(); 
     },[])

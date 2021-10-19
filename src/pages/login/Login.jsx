@@ -80,7 +80,7 @@ const Login = () => {
                 <Form>
                     <Input placeholder='Username' type='text' onChange={(e)=>setUsername(e.target.value)} />
                     <Input placeholder='Password' type='password' onChange={(e)=>setPassword(e.target.value)} />
-                    <Button disbaled={loading} onClick={handleClick}>CREATE</Button>
+                    <Button disbaled={loading} onClick={handleClick}>LOGIN</Button>
                     { isError && <Error>{error}</Error> }
                 </Form>
             </Wrapper>
