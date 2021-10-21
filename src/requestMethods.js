@@ -3,7 +3,7 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
-const BASEURL = 'https://jtk-store-api.herokuapp.com/api';
+const BASEURL = 'https://jtk-online-store.herokuapp.com/api';
 // const BASEURL = 'http://localhost:5000/api';
 const Token = cookies.get('accessToken');
 
